@@ -5,5 +5,5 @@ local args = {
 
 while true do
     game:GetService("ReplicatedStorage").API:FindFirstChild("MinigameAPI/MessageServer"):FireServer(unpack(args))
-    wait(0.1) -- Wait for 0.1 seconds before the next iteration
+    wait() -- This will pause for a short time to prevent overwhelming the server
 end
