@@ -225,7 +225,7 @@ local vehicles = {
 "vehicle_shop_2022_tandem_bike",  
 "vehicle_shop_2022_family_car",  
 "vehicle_shop_2022_bicycle",  
-"vehicle_shop_2022_open_top
+"vehicle_shop_2022_open_top",
 }
 
 -- Function to invoke the server call for each vehicle
