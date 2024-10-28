@@ -1,4 +1,11 @@
-local strollers = {
+local args = {
+    [1] = "strollers",
+    [2] = "rainbow_stroller",  -- This will be replaced
+    [3] = {}
+}
+
+-- List of stroller names (without "rainbow_stroller")
+local strollerList = {
     "desert_2022_chariot_stroller",
     "easter_2022_egg_basket_stroller",
     "easter_2024_meadow_barrow_stroller",
@@ -39,7 +46,6 @@ local strollers = {
     "triple_stroller",
     "stroller-c",
     "banana_stroller",
-    "rainbow_stroller",
     "cannon_stroller",
     "double_stroller",
     "palanquin_stroller",
@@ -52,19 +58,13 @@ local strollers = {
     "winter_2023_stocking_stroller"
 }
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local BuyItem = ReplicatedStorage.API:FindFirstChild("ShopAPI/BuyItem")
-
-for _, stroller in ipairs(strollers) do
-    local args = {
-        [1] = "strollers", -- Category
-        [2] = strollers,    -- Stroller name
-        [3] = {}           -- Additional parameters (empty table here)
-    }
-
-    -- Invoke the BuyItem API with the specified arguments
-    BuyItem:InvokeServer(unpack(args))
-    
-    -- Wait for 1 second before processing the next stroller
-    wait(1)
+local function buySequentialStrollers()
+    -- Change the stroller name in args[2] every 0.5 seconds
+    for _, stroller in ipairs(strollerList) do
+        args[2] = stroller  -- Update to the new stroller name
+        game:GetService("ReplicatedStorage").API:FindFirstChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
+        wait(0.5)  -- Wait for half a second
+    end
 end
+
+buySequentialStrollers()
