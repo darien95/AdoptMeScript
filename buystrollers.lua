@@ -1,4 +1,4 @@
-local strollers = {
+local stroller = {
     "desert_2022_chariot_stroller",
     "easter_2022_egg_basket_stroller",
     "easter_2024_meadow_barrow_stroller",
