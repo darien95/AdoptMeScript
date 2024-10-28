@@ -1,12 +1,5 @@
-local args = {
-    [1] = "transport",
-    [2] = "vehicles",  -- This will be replaced
-    [3] = {}
-}
-
--- List of vehicles names 
-local vehicleList = {
-
+-- List of vehicle names
+local vehicles = {
 "amatruck_2023_toy_delivery_truck",  
 "beach_2024_airboat",  
 "bunker_2022_toxic_barrel",  
@@ -233,16 +226,22 @@ local vehicleList = {
 "vehicle_shop_2022_family_car",  
 "vehicle_shop_2022_bicycle",  
 "vehicle_shop_2022_open_top
-
 }
 
-local function buySequentialvehicles()
-    -- Change the vehicle name in args[2] every 0.5 seconds
-    for _, vehicles in ipairs(vehicleList) do
-        args[2] = vehicles  -- Update to the new stroller name
-        game:GetService("ReplicatedStorage").API:FindFirstChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
-        wait(0.5)  -- Wait for half a second
-    end
+-- Function to invoke the server call for each vehicle
+local function buyVehicle(vehicleName)
+    local args = {
+        [1] = "transport",
+        [2] = vehicleName,  -- Replace the word "vehicles" here
+        [3] = {}
+    }
+
+    game:GetService("ReplicatedStorage").API:FindFirstChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
 end
 
-buySequentialvehicles()
+-- Loop through each vehicle and execute every 0.5 seconds
+for i, vehicleName in ipairs(vehicles) do
+    task.delay((i - 1) * 0.5, function()
+        buyVehicle(vehicleName)
+    end)
+end
