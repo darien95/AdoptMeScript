@@ -1,4 +1,4 @@
-local stroller = {
+local strollers = {
     "desert_2022_chariot_stroller",
     "easter_2022_egg_basket_stroller",
     "easter_2024_meadow_barrow_stroller",
@@ -58,7 +58,7 @@ local BuyItem = ReplicatedStorage.API:FindFirstChild("ShopAPI/BuyItem")
 for _, stroller in ipairs(strollers) do
     local args = {
         [1] = "strollers", -- Category
-        [2] = stroller,    -- Stroller name
+        [2] = strollers,    -- Stroller name
         [3] = {}           -- Additional parameters (empty table here)
     }
 
