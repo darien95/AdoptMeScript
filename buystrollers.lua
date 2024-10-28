@@ -1,101 +1,35 @@
-local args = {
-    [1] = "strollers",
-    [2] = "rainbow_stroller",  -- This will be replaced
-    [3] = {}
+-- List of vehicle names
+local vehicles = {
+    "amatruck_2023_toy_delivery_truck",
+    "beach_2024_airboat",
+    "bunker_2022_toxic_barrel",
+    "camping_2023_camper_van",
+    "capuchin_2024_circus_ball_skates",
+    "capuchin_2024_hot_air_balloon",
+    "celestial_2024_galactic_hoverboard",
+    "chiprac_2023_super_jetpack",
+    "cozy_2021_snowmobile",
+    "cozy_2021_zamboni",
+    -- Continue adding the remaining vehicle names here...
+    "vehicle_shop_2022_family_car",
+    "vehicle_shop_2022_bicycle",
+    "vehicle_shop_2022_open_top"
 }
 
--- List of stroller names (without "rainbow_stroller")
-local strollerList = {
-"desert_2022_chariot_stroller",
-"easter_2022_egg_basket_stroller",
-"easter_2024_meadow_barrow_stroller",
-"fall_2022_harvest_wheelbarrow_stroller",
-"gifthat_2023_flip_phone_stroller",
-"gifthat_2023_coconut_stroller",
-"gifthat_2023_ufo_stroller",
-"gifthat_may_2024_toilet_stroller",
-"gift_refresh_2022_trike_stroller",
-"gift_refresh_2022_red_wagon_stroller",
-"gift_refresh_2022_woodland_stroller",
-"gift_refresh_2022_old_lump_of_log_stroller",
-"gift_refresh_2022_apple_barrel_stroller",
-"gift_refresh_2022_tractor_stroller",
-"gift_refresh_2023_sailboat_stroller",
-"gift_refresh_2023_pea_pod_stroller",
-"lunar_stroller",
-"halloween_2021_witch_hat_stroller",
-"halloween_2022_crystal_ball_stroller",
-"halloween_2023_floating_hand_stroller",
-"halloween_2023_spikey_chariot_stroller",
-"halloween_2024_web_stroller",
-"halloween_2024_potion_stroller",
-"shopping_cart_stroller",
-"rgb_stroller",
-"rain_2023_shipwreck_stroller",
-"snow_2022_snowmobile_stroller",
-"springfest_2023_tulip_stroller",
-"springfest_2023_flower_cart_stroller",
-"springfest_2023_big_leaf_stroller",
-"star_rewards_2022_frog_stroller",
-"summerfest_2024_plane_stroller",
-"summerfest_2024_elephant_stroller",
-"crate_stroller",
-"clam_stroller",
-"rocket_ship_stroller",
-"egg_stroller",
-"triple_stroller",
-"stroller-c",
-"banana_stroller",
-"rainbow_stroller",
-"cannon_stroller",
-"double_stroller",
-"palanquin_stroller",
-"airplane_stroller",
-"throne_stroller",
-"pizza_stroller",
-"heart_stroller",
-"cauldron_stroller",
-"catapult_stroller",
-"duck_stroller",
-"flower_stroller",
-"half_egg_stroller",
-"easter_egg_stroller",
-"vampire_stroller",
-"bunny_stroller",
-"cradle_stroller",
-"unicorn_stroller",
-"pumpkin_stroller",
-"balloon_stroller",
-"stroller-default",
-"reindeer_stroller",
-"droplet_stroller",
-"popsicle_stroller",
-"ice_cream_stroller",
-"baby_basket_stroller",
-"kangaroo_stroller",
-"trike_stroller",
-"quad_stroller",
-"dog_house_stroller",
-"race_car_stroller",
-"high_heel_stroller",
-"french_fries_stroller",
-"hatched_egg_stroller",
-"wheelbarrow_stroller",
-"car_stroller",
-"winter_2022_strawberry_stroller",
-"winter_2023_hot_cocoa_stroller",
-"winter_2023_sleigh_stroller",
-"winter_2023_stocking_stroller",
+-- Function to invoke the server call for each vehicle
+local function buyVehicle(vehicleName)
+    local args = {
+        [1] = "transport",
+        [2] = vehicleName,  -- Replace the word "vehicles" here
+        [3] = {}
+    }
 
-}
-
-local function buySequentialStrollers()
-    -- Change the stroller name in args[2] every 0.5 seconds
-    for _, stroller in ipairs(strollerList) do
-        args[2] = stroller  -- Update to the new stroller name
-        game:GetService("ReplicatedStorage").API:FindFirstChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
-        wait(0.5)  -- Wait for half a second
-    end
+    game:GetService("ReplicatedStorage").API:FindFirstChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
 end
 
-buySequentialStrollers()
+-- Loop through each vehicle and execute every 0.5 seconds
+for i, vehicleName in ipairs(vehicles) do
+    task.delay((i - 1) * 0.5, function()
+        buyVehicle(vehicleName)
+    end)
+end
