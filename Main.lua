@@ -1,3 +1,2 @@
-getgenv().hub_key = "roGhh8dNr5ijH4FSeS6fNz3XdtceQPyqGCtk6hzD"
-getgenv().custom_label = "VPS1"
+getgenv().hub_key = "API_roGhh8dNr5ijH4FSeS6fNz3XdtceQPyqGCtk6hzD"
 loadstring(game:HttpGet("https://nb0.xyz/scripts/2GMANAGER_FARM.lua"))()
