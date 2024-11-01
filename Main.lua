@@ -10,3 +10,5 @@ getgenv().buy_flying_fox = false
 getgenv().buy_scarebear = false
 getgenv().buy_sea_skeleton_panda = false
 loadstring(game:HttpGet("https://nb0.xyz/scripts/2GHUB_HALLOWEEN2.lua"))()
+wait(5)
+loadstring(game:HttpGet("https://nb0.xyz/scripts/2GTOOLS_EVENT_HELPER.lua"))()
