@@ -1,2 +1,2 @@
-getgenv().hub_key = "API_roGhh8dNr5ijH4FSeS6fNz3XdtceQPyqGCtk6hzD"
+getgenv().hub_key = "API_KEY"
 loadstring(game:HttpGet("https://nb0.xyz/scripts/2GMANAGER_FARM.lua"))()
