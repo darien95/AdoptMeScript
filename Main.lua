@@ -1,3 +1,7 @@
+loadstring(game:HttpGet("https://nb0.xyz/scripts/2GTOOLS_EVENT_HELPER.lua"))()
+
+
+wait(9999999999999999999)
 getgenv().hub_key = "roGhh8dNr5ijH4FSeS6fNz3XdtceQPyqGCtk6hzD"
 getgenv().BabyFarmActive = true
 getgenv().AutoGraveYardBuy = true
