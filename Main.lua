@@ -1,5 +1,3 @@
-
-
 getgenv().hub_key = "roGhh8dNr5ijH4FSeS6fNz3XdtceQPyqGCtk6hzD"
 getgenv().BabyFarmActive = true
 getgenv().AutoGraveYardBuy = true
