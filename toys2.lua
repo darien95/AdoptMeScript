@@ -1,5 +1,5 @@
--- List of item names to replace "dd"
-local itemNames = {
+
+local toys = {
 "clouds_rainbow_rattle",
 "banana_rattle",
 "llama_rattle",
@@ -578,19 +578,17 @@ local itemNames = {
     -- Add the rest of the words here
 }
 
--- Delay between each request (in seconds)
-local delayTime = 0.5
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local BuyItem = ReplicatedStorage.API:FindFirstChild("ShopAPI/BuyItem")
 
--- Function to buy each item with a delay
-for _, itemName in ipairs(itemNames) do
+for _, toy in ipairs(toys) do
     local args = {
         [1] = "toys",
-        [2] = itemName,
+        [2] = toy,
         [3] = {}
     }
     
-    game:GetService("ReplicatedStorage").API:FindFirstChild("ShopAPI/BuyItem"):InvokeServer(unpack(args))
-    
-    -- Delay before next request
-    wait(0.5)
+    BuyItem:InvokeServer(unpack(args))
+    wait(1)
 end
+
