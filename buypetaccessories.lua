@@ -1,4 +1,4 @@
-local accessories = {
+local pet_accessories = {
 "birthday_2022_party_horn",
 "birthday_2022_badge",
 "birthday_2022_cupcake_shoes",
@@ -713,7 +713,7 @@ _butterfly_wings",
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local BuyItem = ReplicatedStorage.API:FindFirstChild("ShopAPI/BuyItem")
 
-for _, accessories in ipairs(accessories) do
+for _, accessories in ipairs(pet_accessories) do
     local args = {
         [1] = "pet_accessories",
         [2] = accessories,
