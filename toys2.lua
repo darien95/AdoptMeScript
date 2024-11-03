@@ -575,7 +575,6 @@ local toys = {
 "woodland_2022_premium_log_bench",  
 "woodland_2022_premium_fire_pit",  
 
-    -- Add the rest of the words here
 }
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
